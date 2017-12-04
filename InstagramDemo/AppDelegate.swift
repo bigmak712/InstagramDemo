@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Initialize Parse
+        // Set applicationId and server based on the values in the Heroku settings.
+        // clientKey is not used on Parse open source unless explicitly configured
+        Parse.initialize(
+            with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "InstagramDemo"
+                configuration.clientKey = "19-8u34cnr981u-r9c8us9-m8ufj-u34r"
+                configuration.server = "https://fierce-fjord-32625.herokuapp.com/parse"
+            })
+        )
+        
+        // check if user is logged in.
+        if PFUser.current() != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            // view controller currently being set in Storyboard as default will be overridden
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+        }
+
+        
         return true
     }
 
