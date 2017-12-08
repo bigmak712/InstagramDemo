@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,6 +62,48 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="31.934032983508249"/>
         </scene>
+        <!--Post Detail View Controller-->
+        <scene sceneID="IPu-ly-ucW">
+            <objects>
+                <viewController storyboardIdentifier="PostDetailViewController" id="sVR-L9-qlc" customClass="PostDetailViewController" customModule="InstagramDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L8a-kp-zob">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LGN-uv-pQM">
+                                <rect key="frame" x="8" y="72" width="359" height="200"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="0Wl-zW-A6m"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XqC-Sd-eht">
+                                <rect key="frame" x="8" y="280" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LGN-uv-pQM" firstAttribute="leading" secondItem="GfT-OC-KKw" secondAttribute="leading" constant="8" id="0Od-3o-DFm"/>
+                            <constraint firstItem="XqC-Sd-eht" firstAttribute="leading" secondItem="GfT-OC-KKw" secondAttribute="leading" constant="8" id="AGJ-2Y-70F"/>
+                            <constraint firstItem="LGN-uv-pQM" firstAttribute="top" secondItem="GfT-OC-KKw" secondAttribute="top" constant="8" id="S9O-UW-5aJ"/>
+                            <constraint firstItem="XqC-Sd-eht" firstAttribute="top" secondItem="LGN-uv-pQM" secondAttribute="bottom" constant="8" id="ZOa-hU-QqS"/>
+                            <constraint firstItem="GfT-OC-KKw" firstAttribute="trailing" secondItem="XqC-Sd-eht" secondAttribute="trailing" constant="8" id="aCC-py-hCT"/>
+                            <constraint firstItem="GfT-OC-KKw" firstAttribute="trailing" secondItem="LGN-uv-pQM" secondAttribute="trailing" constant="8" id="dQO-ut-w7W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GfT-OC-KKw"/>
+                    </view>
+                    <connections>
+                        <outlet property="captionLabel" destination="XqC-Sd-eht" id="PgI-1c-o1z"/>
+                        <outlet property="postImageView" destination="LGN-uv-pQM" id="9j2-3q-Hlt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4rM-oM-nFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-551" y="1525"/>
+        </scene>
         <!--Home-->
         <scene sceneID="5tb-l4-XrM">
             <objects>
@@ -71,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lcZ-Yd-8qk">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="240" id="o31-Mh-ePp" customClass="PostCell" customModule="InstagramDemo" customModuleProvider="target">
@@ -108,6 +150,7 @@
                                         <connections>
                                             <outlet property="postDescriptionLabel" destination="25F-d8-7dx" id="3Kg-ZH-7jV"/>
                                             <outlet property="postImageView" destination="8vM-MF-qYv" id="Ghp-JX-T63"/>
+                                            <segue destination="sVR-L9-qlc" kind="show" identifier="detailSegue" id="Q2i-VC-MXA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -122,14 +165,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I4s-OX-uyj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="g7E-u1-7Xe"/>
+                    <navigationItem key="navigationItem" title="Home" id="GWU-vZ-Xav"/>
                     <connections>
                         <outlet property="tableView" destination="lcZ-Yd-8qk" id="czR-kv-js2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2RA-5Z-E0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="804.64767616191909"/>
+            <point key="canvasLocation" x="161" y="1526"/>
         </scene>
         <!--Compose-->
         <scene sceneID="b1F-fw-R4c">
@@ -174,7 +217,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="j46-AM-co8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Compose" id="TfY-aQ-Gqk"/>
+                    <tabBarItem key="tabBarItem" title="Compose" selectedImage="insta_camera_btn" id="TfY-aQ-Gqk"/>
                     <connections>
                         <outlet property="captionTextField" destination="tdX-Xb-CgJ" id="BT0-e0-x0p"/>
                         <outlet property="defaultPhotoLabel" destination="6l3-mK-U9g" id="AKv-uO-jxu"/>
@@ -189,7 +232,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="800.79999999999995" y="804.64767616191909"/>
+            <point key="canvasLocation" x="1140" y="802.848575712144"/>
         </scene>
         <!--Profile-->
         <scene sceneID="XcA-nS-PCS">
@@ -211,11 +254,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dIQ-9q-Qrx"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="gdp-6F-jnA"/>
+                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="profile_tab" id="gdp-6F-jnA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qFc-Kf-PAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1560.8" y="804.64767616191909"/>
+            <point key="canvasLocation" x="1775.2" y="802.848575712144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ABE-rl-0cz">
@@ -228,7 +271,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="wiC-vP-YaP" kind="relationship" relationship="viewControllers" id="PCv-dn-ci5"/>
+                        <segue destination="b60-ZY-2gT" kind="relationship" relationship="viewControllers" id="PCv-dn-ci5"/>
                         <segue destination="Fqj-8l-dFH" kind="relationship" relationship="viewControllers" id="Du8-Sk-sja"/>
                         <segue destination="qSo-bE-4ss" kind="relationship" relationship="viewControllers" id="RzT-zm-NlQ"/>
                     </connections>
@@ -237,5 +280,29 @@
             </objects>
             <point key="canvasLocation" x="802" y="32"/>
         </scene>
+        <!--Home-->
+        <scene sceneID="4Mu-Kd-Acp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b60-ZY-2gT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" selectedImage="feed_tab" id="g7E-u1-7Xe"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wY2-SS-dL2">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wiC-vP-YaP" kind="relationship" relationship="rootViewController" id="1Ne-tc-rHP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oUb-jJ-4K5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="161.59999999999999" y="802.39880059970017"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="feed_tab" width="25" height="25"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
+        <image name="profile_tab" width="25" height="25"/>
+    </resources>
 </document>

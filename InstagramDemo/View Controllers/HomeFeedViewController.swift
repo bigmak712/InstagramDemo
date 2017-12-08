@@ -21,25 +21,19 @@ class HomeFeedViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 180
+        tableView.estimatedRowHeight = 240
+        
+        // Initialize a UIRefreshControl
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        // add refresh control to table view
+        tableView.insertSubview(refreshControl, at: 0)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        let query = PFQuery(className: "Post")
-        query.order(byDescending: "createdAt")
-        query.limit = 20
-        
-        query.findObjectsInBackground { (posts, error) -> Void in
-            if let posts = posts {
-                self.feed = posts as! [Post]
-                self.tableView.reloadData()
-            }
-            else {
-                print("Error: \(String(describing: error?.localizedDescription))")
-            }
-        }
+        updateHomeFeed()
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,14 +68,41 @@ class HomeFeedViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    /*
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        updateHomeFeed()
+        refreshControl.endRefreshing()
+    }
+    
+    func updateHomeFeed() {
+        let query = PFQuery(className: "Post")
+        query.order(byDescending: "createdAt")
+        query.limit = 20
+        
+        query.findObjectsInBackground { (posts, error) -> Void in
+            if let posts = posts {
+                self.feed = posts as! [Post]
+                self.tableView.reloadData()
+            }
+            else {
+                print("Error: \(String(describing: error?.localizedDescription))")
+            }
+        }
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "detailSegue" {
+            let cell = sender as! PostCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let post = feed[indexPath.row]
+                let detailVC = segue.destination as! PostDetailViewController
+                detailVC.post = post
+            }
+        }
     }
-    */
+    
 
 }
